@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, FileText, Brain, Heart, Lungs, Users, CheckCircle } from 'lucide-react';
+import { Play, FileText, Brain, Heart, Settings as Lungs, Users, CheckCircle } from 'lucide-react';
 
 const Demo = () => {
   const [activeStep, setActiveStep] = useState(0);
