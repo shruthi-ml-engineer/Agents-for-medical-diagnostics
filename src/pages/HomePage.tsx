@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Stethoscope, Brain, Database, Activity, Users, TrendingUp, AlertCircle, CheckCircle } from 'lucide-react'
+import { Stethoscope, Brain, Database, Activity, Users, TrendingUp, CheckCircle } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 
 const HomePage: React.FC = () => {
@@ -266,7 +266,7 @@ const HomePage: React.FC = () => {
             <p className="text-sm text-gray-600">Accuracy Rate</p>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }
