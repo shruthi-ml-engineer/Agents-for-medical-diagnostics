@@ -1,6 +1,0 @@
-{
-  "conditions": {
-    "flu": ["fever", "cough", "fatigue"],
-    "cold": ["sneezing", "cough", "sore throat"]
-  }
-}
