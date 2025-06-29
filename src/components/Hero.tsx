@@ -3,6 +3,10 @@ import { motion } from 'framer-motion';
 import { Brain, Heart, Settings as Lungs, Users } from 'lucide-react';
 
 const Hero = () => {
+  const scrollToUpload = () => {
+    document.getElementById('upload')?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-16">
       <div className="absolute inset-0 overflow-hidden">
@@ -34,7 +38,10 @@ const Hero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-12"
         >
-          <button className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300 hover-lift">
+          <button 
+            onClick={scrollToUpload}
+            className="bg-white text-black px-8 py-4 rounded-full font-semibold text-lg hover:bg-gray-200 transition-all duration-300 hover-lift"
+          >
             Start Diagnosis
           </button>
         </motion.div>

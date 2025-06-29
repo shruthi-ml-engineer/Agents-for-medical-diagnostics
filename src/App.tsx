@@ -3,6 +3,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import HowItWorks from './components/HowItWorks';
+import Upload from './components/Upload';
 import Demo from './components/Demo';
 import Footer from './components/Footer';
 
@@ -14,6 +15,7 @@ function App() {
         <Hero />
         <Features />
         <HowItWorks />
+        <Upload />
         <Demo />
         <Footer />
       </div>

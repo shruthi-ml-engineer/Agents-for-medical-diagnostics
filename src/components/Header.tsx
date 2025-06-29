@@ -31,7 +31,7 @@ const Header = () => {
           </div>
 
           <nav className="hidden md:flex space-x-8">
-            {['Features', 'How It Works', 'Demo', 'About'].map((item) => (
+            {['Features', 'How It Works', 'Upload', 'Demo', 'About'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase().replace(' ', '-')}`}
@@ -59,7 +59,7 @@ const Header = () => {
             className="md:hidden bg-black/95 backdrop-blur-md border-t border-white/10"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
-              {['Features', 'How It Works', 'Demo', 'About'].map((item) => (
+              {['Features', 'How It Works', 'Upload', 'Demo', 'About'].map((item) => (
                 <a
                   key={item}
                   href={`#${item.toLowerCase().replace(' ', '-')}`}
