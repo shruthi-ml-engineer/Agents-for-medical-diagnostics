@@ -94,7 +94,7 @@ const HomePage: React.FC = () => {
         transition={{ delay: 0.1 }}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
       >
-        {systemMetrics.map((metric, index) => (
+        {systemMetrics.map((metric) => (
           <div key={metric.label} className="bg-white rounded-xl p-6 border border-gray-100 shadow-sm">
             <div className="flex items-center justify-between">
               <div>
@@ -266,7 +266,7 @@ const HomePage: React.FC = () => {
             <p className="text-sm text-gray-600">Accuracy Rate</p>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }
