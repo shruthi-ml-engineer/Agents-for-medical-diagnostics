@@ -266,7 +266,7 @@ const HomePage: React.FC = () => {
             <p className="text-sm text-gray-600">Accuracy Rate</p>
           </div>
         </div>
-      </div>
+      </motion.div>
     </div>
   )
 }
