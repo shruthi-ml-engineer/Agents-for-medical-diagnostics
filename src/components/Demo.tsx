@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Play, FileText, Brain, Heart, Settings as Lungs, Users, CheckCircle, ArrowRight } from 'lucide-react';
+import { Play, FileText, Brain, Heart, Settings as Lungs, Users, CheckCircle, ArrowRight, Download } from 'lucide-react';
 
 const Demo = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -8,68 +8,120 @@ const Demo = () => {
   const [showResults, setShowResults] = useState(false);
 
   const agentResults = {
-    cardiologist: `**Cardiologist Analysis:**
-
-**Possible Causes:**
-• **Anxiety-induced cardiac symptoms** - The patient's symptoms of chest pain, palpitations, and feeling of impending doom, combined with normal cardiac workup, strongly suggest anxiety-related cardiac manifestations
-• **GERD-related chest pain** - Given the patient's history of GERD, acid reflux could be contributing to chest pain that mimics cardiac symptoms
-• **Caffeine/lifestyle-induced palpitations** - Irregular exercise, caffeine use, and high-stress job may contribute to palpitations and PVCs noted on Holter monitor
-
-**Recommended Next Steps:**
-• Continue monitoring with periodic ECGs if symptoms persist
-• Consider stress testing if symptoms worsen or change in character
-• Lifestyle modifications: reduce caffeine intake, regular exercise, stress management
-• Coordinate with psychology for anxiety management as primary intervention`,
-
-    psychologist: `**Psychology Assessment:**
-
-**Mental Health Issues Identified:**
-• **Panic Disorder** - The patient's episodes of intense chest pain, palpitations, shortness of breath, dizziness, sweating, and feeling of impending doom lasting 10-20 minutes are classic panic attack symptoms
-• **Generalized Anxiety Disorder** - Pre-existing anxiety diagnosis with family history (mother with GAD) and high-stress occupation contributing to overall anxiety levels
-• **Health Anxiety/Cardiac Anxiety** - Fear of having a heart attack despite normal cardiac workup indicates specific health-related anxiety
-
-**Recommended Next Steps:**
-• Increase frequency of CBT sessions focusing on panic disorder management
-• Consider panic-specific CBT techniques (interoceptive exposure, breathing exercises)
-• Evaluate current benzodiazepine use - consider tapering with proper support
-• Stress management techniques for work-related stressors
-• Psychoeducation about panic attacks vs. heart attacks to reduce health anxiety`,
-
-    pulmonologist: `**Pulmonology Assessment:**
-
-**Respiratory Issues Identified:**
-• **Anxiety-induced hyperventilation** - Shortness of breath during panic episodes likely due to hyperventilation syndrome associated with anxiety
-• **GERD-related respiratory symptoms** - Acid reflux can cause respiratory symptoms including shortness of breath and chest discomfort
-• **Stress-related breathing patterns** - High-stress lifestyle may contribute to irregular breathing patterns and perceived shortness of breath
-
-**Recommended Next Steps:**
-• Breathing exercises and diaphragmatic breathing training
-• Pulmonary function tests if symptoms persist or worsen
-• Consider sleep study if sleep disturbances are present
-• Coordinate with GERD management to address potential respiratory impact
-• Monitor for any changes in respiratory symptoms that might indicate other conditions`
+    cardiologist: {
+      title: "Cardiologist Analysis",
+      possibleCauses: [
+        {
+          condition: "Anxiety-induced cardiac symptoms",
+          description: "The patient's symptoms of chest pain, palpitations, and feeling of impending doom, combined with normal cardiac workup, strongly suggest anxiety-related cardiac manifestations"
+        },
+        {
+          condition: "GERD-related chest pain",
+          description: "Given the patient's history of GERD, acid reflux could be contributing to chest pain that mimics cardiac symptoms"
+        },
+        {
+          condition: "Caffeine/lifestyle-induced palpitations",
+          description: "Irregular exercise, caffeine use, and high-stress job may contribute to palpitations and PVCs noted on Holter monitor"
+        }
+      ],
+      recommendations: [
+        "Continue monitoring with periodic ECGs if symptoms persist",
+        "Consider stress testing if symptoms worsen or change in character",
+        "Lifestyle modifications: reduce caffeine intake, regular exercise, stress management",
+        "Coordinate with psychology for anxiety management as primary intervention"
+      ]
+    },
+    psychologist: {
+      title: "Psychology Assessment",
+      mentalHealthIssues: [
+        {
+          condition: "Panic Disorder",
+          description: "The patient's episodes of intense chest pain, palpitations, shortness of breath, dizziness, sweating, and feeling of impending doom lasting 10-20 minutes are classic panic attack symptoms"
+        },
+        {
+          condition: "Generalized Anxiety Disorder",
+          description: "Pre-existing anxiety diagnosis with family history (mother with GAD) and high-stress occupation contributing to overall anxiety levels"
+        },
+        {
+          condition: "Health Anxiety/Cardiac Anxiety",
+          description: "Fear of having a heart attack despite normal cardiac workup indicates specific health-related anxiety"
+        }
+      ],
+      recommendations: [
+        "Increase frequency of CBT sessions focusing on panic disorder management",
+        "Consider panic-specific CBT techniques (interoceptive exposure, breathing exercises)",
+        "Evaluate current benzodiazepine use - consider tapering with proper support",
+        "Stress management techniques for work-related stressors",
+        "Psychoeducation about panic attacks vs. heart attacks to reduce health anxiety"
+      ]
+    },
+    pulmonologist: {
+      title: "Pulmonology Assessment",
+      respiratoryIssues: [
+        {
+          condition: "Anxiety-induced hyperventilation",
+          description: "Shortness of breath during panic episodes likely due to hyperventilation syndrome associated with anxiety"
+        },
+        {
+          condition: "GERD-related respiratory symptoms",
+          description: "Acid reflux can cause respiratory symptoms including shortness of breath and chest discomfort"
+        },
+        {
+          condition: "Stress-related breathing patterns",
+          description: "High-stress lifestyle may contribute to irregular breathing patterns and perceived shortness of breath"
+        }
+      ],
+      recommendations: [
+        "Breathing exercises and diaphragmatic breathing training",
+        "Pulmonary function tests if symptoms persist or worsen",
+        "Consider sleep study if sleep disturbances are present",
+        "Coordinate with GERD management to address potential respiratory impact",
+        "Monitor for any changes in respiratory symptoms that might indicate other conditions"
+      ]
+    }
   };
 
-  const finalDiagnosis = `**Final Multidisciplinary Diagnosis:**
-
-**Primary Diagnoses:**
-• **Panic Disorder** - Recurrent panic attacks with characteristic symptoms of chest pain, palpitations, shortness of breath, dizziness, sweating, and feeling of impending doom
-• **Generalized Anxiety Disorder** - Underlying anxiety condition exacerbated by high-stress work environment
-• **GERD with cardiac symptom mimicry** - Gastroesophageal reflux contributing to chest pain and potentially triggering anxiety episodes
-
-**Contributing Factors:**
-• High-stress occupation as investment banker
-• Family history of anxiety disorders
-• Lifestyle factors (irregular exercise, caffeine use)
-• Health anxiety focused on cardiac concerns
-
-**Integrated Treatment Plan:**
-• **Primary:** Intensive CBT for panic disorder with panic-specific interventions
-• **Secondary:** GERD optimization with dietary modifications and PPI management
-• **Supportive:** Lifestyle modifications including stress management, regular exercise, and caffeine reduction
-• **Monitoring:** Periodic cardiac follow-up for reassurance and symptom tracking
-
-**Prognosis:** Excellent with proper anxiety management and lifestyle modifications. Symptoms should significantly improve with targeted panic disorder treatment.`;
+  const finalDiagnosis = {
+    primaryDiagnoses: [
+      {
+        condition: "Panic Disorder",
+        description: "Recurrent panic attacks with characteristic symptoms of chest pain, palpitations, shortness of breath, dizziness, sweating, and feeling of impending doom"
+      },
+      {
+        condition: "Generalized Anxiety Disorder",
+        description: "Underlying anxiety condition exacerbated by high-stress work environment"
+      },
+      {
+        condition: "GERD with cardiac symptom mimicry",
+        description: "Gastroesophageal reflux contributing to chest pain and potentially triggering anxiety episodes"
+      }
+    ],
+    contributingFactors: [
+      "High-stress occupation as investment banker",
+      "Family history of anxiety disorders",
+      "Lifestyle factors (irregular exercise, caffeine use)",
+      "Health anxiety focused on cardiac concerns"
+    ],
+    treatmentPlan: [
+      {
+        priority: "Primary",
+        treatment: "Intensive CBT for panic disorder with panic-specific interventions"
+      },
+      {
+        priority: "Secondary",
+        treatment: "GERD optimization with dietary modifications and PPI management"
+      },
+      {
+        priority: "Supportive",
+        treatment: "Lifestyle modifications including stress management, regular exercise, and caffeine reduction"
+      },
+      {
+        priority: "Monitoring",
+        treatment: "Periodic cardiac follow-up for reassurance and symptom tracking"
+      }
+    ],
+    prognosis: "Excellent with proper anxiety management and lifestyle modifications. Symptoms should significantly improve with targeted panic disorder treatment."
+  };
 
   const demoSteps = [
     {
@@ -127,13 +179,81 @@ const Demo = () => {
     }, 2000);
   };
 
-  const getAgentResult = (step: number) => {
-    switch (step) {
-      case 1: return agentResults.cardiologist;
-      case 2: return agentResults.psychologist;
-      case 3: return agentResults.pulmonologist;
-      default: return '';
-    }
+  const downloadReport = () => {
+    const reportContent = generateReportContent();
+    const blob = new Blob([reportContent], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'Medical_Diagnosis_Report_Michael_Johnson.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  };
+
+  const generateReportContent = () => {
+    const date = new Date().toLocaleDateString();
+    return `
+MEDICAL AI DIAGNOSTIC REPORT
+Generated on: ${date}
+
+PATIENT INFORMATION
+Name: Michael Johnson
+Age: 29
+Gender: Male
+Patient ID: 345678
+
+CARDIOLOGIST ANALYSIS
+${agentResults.cardiologist.possibleCauses.map((cause, index) => 
+  `${index + 1}. ${cause.condition}
+   ${cause.description}`
+).join('\n\n')}
+
+Recommended Next Steps:
+${agentResults.cardiologist.recommendations.map((rec, index) => `${index + 1}. ${rec}`).join('\n')}
+
+PSYCHOLOGY ASSESSMENT
+${agentResults.psychologist.mentalHealthIssues.map((issue, index) => 
+  `${index + 1}. ${issue.condition}
+   ${issue.description}`
+).join('\n\n')}
+
+Recommended Next Steps:
+${agentResults.psychologist.recommendations.map((rec, index) => `${index + 1}. ${rec}`).join('\n')}
+
+PULMONOLOGY ASSESSMENT
+${agentResults.pulmonologist.respiratoryIssues.map((issue, index) => 
+  `${index + 1}. ${issue.condition}
+   ${issue.description}`
+).join('\n\n')}
+
+Recommended Next Steps:
+${agentResults.pulmonologist.recommendations.map((rec, index) => `${index + 1}. ${rec}`).join('\n')}
+
+FINAL MULTIDISCIPLINARY DIAGNOSIS
+
+Primary Diagnoses:
+${finalDiagnosis.primaryDiagnoses.map((diagnosis, index) => 
+  `${index + 1}. ${diagnosis.condition}
+   ${diagnosis.description}`
+).join('\n\n')}
+
+Contributing Factors:
+${finalDiagnosis.contributingFactors.map((factor, index) => `${index + 1}. ${factor}`).join('\n')}
+
+Integrated Treatment Plan:
+${finalDiagnosis.treatmentPlan.map((plan, index) => 
+  `${index + 1}. ${plan.priority}: ${plan.treatment}`
+).join('\n')}
+
+Prognosis:
+${finalDiagnosis.prognosis}
+
+---
+This report was generated by MedAI Diagnostics multi-agent system.
+For medical decisions, please consult with qualified healthcare professionals.
+    `.trim();
   };
 
   return (
@@ -235,8 +355,29 @@ const Demo = () => {
                     <h4 className="font-semibold text-red-400">Cardiologist Report</h4>
                   </div>
                   {activeStep > 1 ? (
-                    <div className="text-sm text-gray-300 whitespace-pre-line">
-                      {agentResults.cardiologist}
+                    <div className="space-y-4">
+                      <div>
+                        <h5 className="font-medium text-white mb-2">Possible Causes:</h5>
+                        <div className="space-y-2">
+                          {agentResults.cardiologist.possibleCauses.map((cause, index) => (
+                            <div key={index} className="bg-white/5 rounded p-3">
+                              <h6 className="font-medium text-red-300 mb-1">{cause.condition}</h6>
+                              <p className="text-sm text-gray-300">{cause.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="font-medium text-white mb-2">Recommendations:</h5>
+                        <ul className="space-y-1">
+                          {agentResults.cardiologist.recommendations.map((rec, index) => (
+                            <li key={index} className="text-sm text-gray-300 flex items-start">
+                              <span className="text-red-400 mr-2">•</span>
+                              {rec}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   ) : (
                     <div className="flex items-center space-x-2 text-sm text-gray-400">
@@ -264,8 +405,29 @@ const Demo = () => {
                     <h4 className="font-semibold text-blue-400">Psychology Report</h4>
                   </div>
                   {activeStep > 2 ? (
-                    <div className="text-sm text-gray-300 whitespace-pre-line">
-                      {agentResults.psychologist}
+                    <div className="space-y-4">
+                      <div>
+                        <h5 className="font-medium text-white mb-2">Mental Health Issues:</h5>
+                        <div className="space-y-2">
+                          {agentResults.psychologist.mentalHealthIssues.map((issue, index) => (
+                            <div key={index} className="bg-white/5 rounded p-3">
+                              <h6 className="font-medium text-blue-300 mb-1">{issue.condition}</h6>
+                              <p className="text-sm text-gray-300">{issue.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="font-medium text-white mb-2">Recommendations:</h5>
+                        <ul className="space-y-1">
+                          {agentResults.psychologist.recommendations.map((rec, index) => (
+                            <li key={index} className="text-sm text-gray-300 flex items-start">
+                              <span className="text-blue-400 mr-2">•</span>
+                              {rec}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   ) : (
                     <div className="flex items-center space-x-2 text-sm text-gray-400">
@@ -293,8 +455,29 @@ const Demo = () => {
                     <h4 className="font-semibold text-green-400">Pulmonology Report</h4>
                   </div>
                   {activeStep > 3 ? (
-                    <div className="text-sm text-gray-300 whitespace-pre-line">
-                      {agentResults.pulmonologist}
+                    <div className="space-y-4">
+                      <div>
+                        <h5 className="font-medium text-white mb-2">Respiratory Issues:</h5>
+                        <div className="space-y-2">
+                          {agentResults.pulmonologist.respiratoryIssues.map((issue, index) => (
+                            <div key={index} className="bg-white/5 rounded p-3">
+                              <h6 className="font-medium text-green-300 mb-1">{issue.condition}</h6>
+                              <p className="text-sm text-gray-300">{issue.description}</p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div>
+                        <h5 className="font-medium text-white mb-2">Recommendations:</h5>
+                        <ul className="space-y-1">
+                          {agentResults.pulmonologist.recommendations.map((rec, index) => (
+                            <li key={index} className="text-sm text-gray-300 flex items-start">
+                              <span className="text-green-400 mr-2">•</span>
+                              {rec}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
                     </div>
                   ) : (
                     <div className="flex items-center space-x-2 text-sm text-gray-400">
@@ -327,23 +510,82 @@ const Demo = () => {
             className="mt-12"
           >
             <div className="border-gradient rounded-2xl p-8">
-              <div className="flex items-center space-x-3 mb-6">
-                <div className="bg-purple-500/20 p-3 rounded-lg">
-                  <Users className="h-8 w-8 text-purple-400" />
+              <div className="flex items-center justify-between mb-6">
+                <div className="flex items-center space-x-3">
+                  <div className="bg-purple-500/20 p-3 rounded-lg">
+                    <Users className="h-8 w-8 text-purple-400" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl font-semibold text-white">Final Multidisciplinary Diagnosis</h3>
+                    <p className="text-gray-400">Integrated analysis from all specialists</p>
+                  </div>
                 </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-white">Final Multidisciplinary Diagnosis</h3>
-                  <p className="text-gray-400">Integrated analysis from all specialists</p>
-                </div>
+                <button
+                  onClick={downloadReport}
+                  className="bg-white text-black px-6 py-3 rounded-full font-semibold hover:bg-gray-200 transition-all duration-300 hover-lift flex items-center space-x-2"
+                >
+                  <Download className="h-5 w-5" />
+                  <span>Download Report</span>
+                </button>
               </div>
               
-              <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-6">
-                <div className="text-gray-300 whitespace-pre-line leading-relaxed">
-                  {finalDiagnosis}
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div className="space-y-6">
+                  <div className="bg-purple-500/10 border border-purple-500/20 rounded-xl p-6">
+                    <h4 className="text-lg font-semibold text-purple-300 mb-4">Primary Diagnoses</h4>
+                    <div className="space-y-3">
+                      {finalDiagnosis.primaryDiagnoses.map((diagnosis, index) => (
+                        <div key={index} className="bg-white/5 rounded p-3">
+                          <h5 className="font-medium text-white mb-1">{diagnosis.condition}</h5>
+                          <p className="text-sm text-gray-300">{diagnosis.description}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-orange-500/10 border border-orange-500/20 rounded-xl p-6">
+                    <h4 className="text-lg font-semibold text-orange-300 mb-4">Contributing Factors</h4>
+                    <ul className="space-y-2">
+                      {finalDiagnosis.contributingFactors.map((factor, index) => (
+                        <li key={index} className="text-sm text-gray-300 flex items-start">
+                          <span className="text-orange-400 mr-2">•</span>
+                          {factor}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                <div className="space-y-6">
+                  <div className="bg-green-500/10 border border-green-500/20 rounded-xl p-6">
+                    <h4 className="text-lg font-semibold text-green-300 mb-4">Integrated Treatment Plan</h4>
+                    <div className="space-y-3">
+                      {finalDiagnosis.treatmentPlan.map((plan, index) => (
+                        <div key={index} className="bg-white/5 rounded p-3">
+                          <div className="flex items-center space-x-2 mb-1">
+                            <span className={`px-2 py-1 rounded text-xs font-medium ${
+                              plan.priority === 'Primary' ? 'bg-red-500/20 text-red-300' :
+                              plan.priority === 'Secondary' ? 'bg-yellow-500/20 text-yellow-300' :
+                              plan.priority === 'Supportive' ? 'bg-blue-500/20 text-blue-300' :
+                              'bg-gray-500/20 text-gray-300'
+                            }`}>
+                              {plan.priority}
+                            </span>
+                          </div>
+                          <p className="text-sm text-gray-300">{plan.treatment}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="bg-blue-500/10 border border-blue-500/20 rounded-xl p-6">
+                    <h4 className="text-lg font-semibold text-blue-300 mb-4">Prognosis</h4>
+                    <p className="text-gray-300">{finalDiagnosis.prognosis}</p>
+                  </div>
                 </div>
               </div>
 
-              <div className="mt-6 flex items-center justify-center space-x-4">
+              <div className="mt-8 flex items-center justify-center space-x-6">
                 <div className="flex items-center space-x-2 text-green-400">
                   <CheckCircle className="h-5 w-5" />
                   <span className="text-sm font-medium">Analysis Complete</span>
@@ -352,6 +594,11 @@ const Demo = () => {
                 <div className="flex items-center space-x-2 text-blue-400">
                   <FileText className="h-5 w-5" />
                   <span className="text-sm font-medium">Report Generated</span>
+                </div>
+                <ArrowRight className="h-4 w-4 text-gray-400" />
+                <div className="flex items-center space-x-2 text-purple-400">
+                  <Download className="h-5 w-5" />
+                  <span className="text-sm font-medium">Ready for Download</span>
                 </div>
               </div>
             </div>
