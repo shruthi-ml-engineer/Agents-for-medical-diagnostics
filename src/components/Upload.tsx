@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { Upload as UploadIcon, FileText, X, CheckCircle, AlertCircle, Eye, EyeOff } from 'lucide-react';
 

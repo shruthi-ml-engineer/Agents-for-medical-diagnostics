@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Play, FileText, Brain, Heart, Settings as Lungs, Users, CheckCircle, ArrowRight, Download } from 'lucide-react';
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { Zap, Shield, Target, Clock, Brain, Network } from 'lucide-react';
 

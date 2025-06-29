@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Menu, X, Activity } from 'lucide-react';
 import { motion } from 'framer-motion';
 
