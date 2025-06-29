@@ -56,7 +56,7 @@ const Hero = () => {
             { icon: Brain, label: 'Psychology', color: 'text-blue-400' },
             { icon: Lungs, label: 'Pulmonology', color: 'text-green-400' },
             { icon: Users, label: 'Team Analysis', color: 'text-purple-400' },
-          ].map((item, index) => (
+          ].map((item) => (
             <div key={item.label} className="flex flex-col items-center space-y-3">
               <div className="relative">
                 <div className="absolute inset-0 pulse-ring border border-white/20 rounded-full"></div>
