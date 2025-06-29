@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Brain, Heart, Lungs, Users } from 'lucide-react';
+import { Brain, Heart, Settings as Lungs, Users } from 'lucide-react';
 
 const Hero = () => {
   return (
