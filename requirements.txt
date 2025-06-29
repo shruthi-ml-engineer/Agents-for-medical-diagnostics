@@ -1,7 +1,0 @@
-openai
-langchain
-pandas
-scikit-learn
-streamlit
-fastapi
-uvicorn
